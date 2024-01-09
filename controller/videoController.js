@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const folderPath = path.join(__dirname, "..", "videos/");
 
 
+
 const addVideos = async (req, res) => {
   try {
     const subtitle = req.body.subtitle ;
@@ -38,4 +39,14 @@ const getAllVideos = async (req, res)=>{
     res.send({status:true, data:data.reverse()})
 }
 
-module.exports = { addVideos, getAllVideos };
+const deleteVideo = async (req, res)=>{
+  fs.rm(folderPath+req.params.name, err => {
+    if (err) {  
+      throw err;
+    }
+    console.log(`${req.params.name} is deleted!`);
+  });
+  res.send({data:"deleted"})
+}
+
+module.exports = { addVideos, getAllVideos , deleteVideo};
