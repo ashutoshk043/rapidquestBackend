@@ -5,7 +5,7 @@ const folderPath = path.join(__dirname, "..", "videos/");
 
 const addVideos = async (req, res) => {
   try {
-    const subtitle = req.body.subtitle;
+    const subtitle = req.body.subtitle ;
     let videoFileName;
     let file;
 
